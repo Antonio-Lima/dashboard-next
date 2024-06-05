@@ -96,6 +96,7 @@ export default function Header() {
             color={THEME.colors.white}
             fontWeight="medium"
             fontSize="0.875rem"
+            fontFamily="Public Sans"
           >
             ACME Corporation
           </Typography>
@@ -106,6 +107,7 @@ export default function Header() {
             fontWeight="medium"
             fontSize="0.875rem"
             lineHeight="1rem"
+            fontFamily="Public Sans"
           >
             Antônio Lima
           </Typography>
@@ -113,6 +115,7 @@ export default function Header() {
             color={THEME.colors["gray-300"]}
             fontSize="0.875rem"
             lineHeight="1rem"
+            fontFamily="Public Sans"
           >
             antonio.lima@acmecorp.com
           </Typography>
