@@ -1,4 +1,5 @@
 import GoalPoints from "@/components/Goal/Points";
+import GoalProgress from "@/components/Goal/Progress";
 import { THEME } from "@/constants/theme";
 import { Box, Typography } from "@mui/material";
 import { ReactNode } from "react";
@@ -51,10 +52,12 @@ export default function SummaryCard({
         fontWeight="medium"
         color={THEME.colors["gray-300"]}
         mt="0.375rem"
+        mb="2.625rem"
       >
         {title}
       </Typography>
       {variant === "points" && <GoalPoints value={value} goal={goal} />}
+      {variant === "progression" && <GoalProgress value={value} goal={goal} />}
     </Box>
   );
 }
