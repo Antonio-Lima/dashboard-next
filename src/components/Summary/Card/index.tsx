@@ -46,6 +46,7 @@ export default function SummaryCard({
           fontSize="1.875rem"
           lineHeight="1.875rem"
           color={THEME.colors.white}
+          fontFamily="Public Sans"
         >
           {value.toLocaleString("pt-BR")}
         </Typography>
@@ -56,6 +57,7 @@ export default function SummaryCard({
             lineHeight="1.125rem"
             color={THEME.colors["gray-300"]}
             mb="2px"
+            fontFamily="Public Sans"
           >
             /{goal.toLocaleString("pt-BR")}
           </Typography>
@@ -67,6 +69,7 @@ export default function SummaryCard({
         color={THEME.colors["gray-300"]}
         mt="0.375rem"
         mb="2.625rem"
+        fontFamily="Public Sans"
       >
         {title}
       </Typography>

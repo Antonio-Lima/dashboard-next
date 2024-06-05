@@ -40,6 +40,7 @@ export default function Summary({
           fontWeight="regular"
           fontSize="0.625rem"
           lineHeight="0.75rem"
+          fontFamily="Public Sans"
         >
           RESUMO MENSAL
         </Typography>
@@ -48,6 +49,7 @@ export default function Summary({
           fontWeight="bold"
           fontSize="1.375rem"
           lineHeight="1.625rem"
+          fontFamily="Public Sans"
         >
           {getFormatedActualDate()}
         </Typography>
@@ -110,6 +112,7 @@ export default function Summary({
             fontWeight="bold"
             fontSize="1.125rem"
             color={THEME.colors.black}
+            fontFamily="Public Sans"
           >
             Pronto para conhecer seu cliente?
           </Typography>
