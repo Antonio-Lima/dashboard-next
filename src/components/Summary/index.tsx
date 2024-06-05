@@ -1,10 +1,13 @@
-import { THEME } from "@/constants/theme";
-import { getFormatedActualDate } from "@/utils";
-import { Box, Card, Typography } from "@mui/material";
-import Image from "next/image";
-import Button from "../Button";
 import { Add } from "@mui/icons-material";
-import { ReactNode } from "react";
+import Image from "next/image";
+import { Box, Card, Typography } from "@mui/material";
+
+import { THEME } from "@/constants/theme";
+
+import { getFormatedActualDate } from "@/utils";
+
+import Button from "../Button";
+import SummaryCard from "./Card";
 
 export default function Summary() {
   return (
@@ -34,8 +37,8 @@ export default function Summary() {
         </Typography>
         <Box width="100%" display="flex" gap="1.25rem" mt="1rem">
           <SummaryCard
-            value="0"
-            goal="5"
+            value={3}
+            goal={5}
             title={
               <>
                 PESQUISAS <br /> EM CAMPO
@@ -44,8 +47,8 @@ export default function Summary() {
             variant="points"
           />
           <SummaryCard
-            value="300"
-            goal=""
+            value={300}
+            goal={0}
             title={
               <>
                 PESQUISAS EM
@@ -56,8 +59,8 @@ export default function Summary() {
             variant="none"
           />
           <SummaryCard
-            value="2.000"
-            goal="10.000"
+            value={2000}
+            goal={10000}
             title={
               <>
                 DISPAROS
@@ -96,66 +99,6 @@ export default function Summary() {
           <Button label="Nova Pesquisa" icon={<Add />}></Button>
         </Box>
       </Card>
-    </Box>
-  );
-}
-
-interface CardProps {
-  value: string;
-  goal: string;
-  title: ReactNode;
-  variant: "points" | "progression" | "none";
-}
-
-function SummaryCard({ value, goal, title, variant }: CardProps) {
-  return (
-    <Box
-      width="100%"
-      borderRadius="4px"
-      bgcolor={THEME.colors["gray-500"]}
-      p="1.375rem"
-      border="1px solid"
-      borderColor={THEME.colors["gray-500"]}
-    >
-      <Goal value={value} goal={goal} />
-      <Typography
-        fontSize="0.875rem"
-        fontWeight="medium"
-        color={THEME.colors["gray-300"]}
-        mt="0.375rem"
-      >
-        {title}
-      </Typography>
-    </Box>
-  );
-}
-
-interface GoalProps {
-  goal: string;
-  value: string;
-}
-function Goal({ goal, value }: GoalProps) {
-  return (
-    <Box display="flex" alignItems="flex-end">
-      <Typography
-        fontWeight="bold"
-        fontSize="1.875rem"
-        lineHeight="1.875rem"
-        color={THEME.colors.white}
-      >
-        {value}
-      </Typography>
-      {goal && (
-        <Typography
-          fontWeight="regular"
-          fontSize="1.125rem"
-          lineHeight="1.125rem"
-          color={THEME.colors["gray-300"]}
-          mb="2px"
-        >
-          /{goal}
-        </Typography>
-      )}
     </Box>
   );
 }
