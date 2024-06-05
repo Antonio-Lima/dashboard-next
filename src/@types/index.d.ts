@@ -12,7 +12,7 @@ export interface ResearchesType {
   myresearches: MyresearchType[];
 }
 
-export interface MyresearchType {
+export interface MyResearchType {
   name: string;
   id: number;
   status: string;
