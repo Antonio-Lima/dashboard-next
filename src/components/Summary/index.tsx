@@ -14,12 +14,14 @@ interface SummaryProps {
   running: string;
   scripting: number;
   audience: AudienceType;
+  gridArea: string;
 }
 
 export default function Summary({
   running,
   scripting,
   audience,
+  gridArea,
 }: SummaryProps) {
   const [runningValue, runningGoal] = running.split("/");
 
@@ -31,6 +33,7 @@ export default function Summary({
       pb="2.375rem"
       display="flex"
       alignItems="center"
+      gridArea={gridArea}
     >
       <Box color={THEME.colors.white} maxWidth="731px" width="100%" mx="auto">
         <Typography
