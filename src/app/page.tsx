@@ -1,11 +1,17 @@
-import Image from "next/image";
 import Summary from "@/components/Summary";
+import { getHomeData } from "@/services/requests";
 import { Box } from "@mui/material";
 
-export default function Home() {
+export default async function Home() {
+  const { audience, credits, researches } = await getHomeData();
+
   return (
     <Box>
-      <Summary />
+      <Summary
+        audience={audience}
+        running={researches.running}
+        scripting={researches.scripting}
+      />
     </Box>
   );
 }
