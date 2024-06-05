@@ -9,6 +9,7 @@ interface CardProps {
   goal: number;
   title: ReactNode;
   variant: "points" | "progression" | "none";
+  hasMark?: boolean;
 }
 
 export default function SummaryCard({
@@ -16,9 +17,11 @@ export default function SummaryCard({
   goal,
   title,
   variant,
+  hasMark = false,
 }: CardProps) {
   return (
     <Box
+      position="relative"
       width="100%"
       borderRadius="4px"
       bgcolor={THEME.colors["gray-500"]}
@@ -26,6 +29,17 @@ export default function SummaryCard({
       border="1px solid"
       borderColor={THEME.colors["gray-500"]}
     >
+      {hasMark && (
+        <Box
+          position="absolute"
+          top="0.625rem"
+          right="0.375rem"
+          width="6px"
+          height="6px"
+          borderRadius={999}
+          bgcolor={THEME.colors["green-500"]}
+        />
+      )}
       <Box display="flex" alignItems="flex-end">
         <Typography
           fontWeight="bold"

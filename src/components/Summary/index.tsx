@@ -57,6 +57,7 @@ export default function Summary({
                 PESQUISAS <br /> EM CAMPO
               </>
             }
+            hasMark
             variant="points"
           />
           <SummaryCard
