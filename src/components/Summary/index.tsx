@@ -37,7 +37,7 @@ export default function Summary() {
         </Typography>
         <Box width="100%" display="flex" gap="1.25rem" mt="1rem">
           <SummaryCard
-            value={3}
+            value={0}
             goal={5}
             title={
               <>
