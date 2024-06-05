@@ -8,8 +8,21 @@ import { getFormatedActualDate } from "@/utils";
 
 import Button from "../Button";
 import SummaryCard from "./Card";
+import { AudienceType } from "@/@types";
 
-export default function Summary() {
+interface SummaryProps {
+  running: string;
+  scripting: number;
+  audience: AudienceType;
+}
+
+export default function Summary({
+  running,
+  scripting,
+  audience,
+}: SummaryProps) {
+  const [runningValue, runningGoal] = running.split("/");
+
   return (
     <Box
       width="100%"
@@ -37,8 +50,8 @@ export default function Summary() {
         </Typography>
         <Box width="100%" display="flex" gap="1.25rem" mt="1rem">
           <SummaryCard
-            value={0}
-            goal={5}
+            value={Number(runningValue)}
+            goal={Number(runningGoal)}
             title={
               <>
                 PESQUISAS <br /> EM CAMPO
@@ -47,7 +60,7 @@ export default function Summary() {
             variant="points"
           />
           <SummaryCard
-            value={300}
+            value={scripting}
             goal={0}
             title={
               <>
@@ -59,8 +72,8 @@ export default function Summary() {
             variant="none"
           />
           <SummaryCard
-            value={2000}
-            goal={10000}
+            value={audience.sended}
+            goal={audience.balance}
             title={
               <>
                 DISPAROS
