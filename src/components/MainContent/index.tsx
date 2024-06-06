@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { Box, Typography } from "@mui/material";
+"use client";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 import { AudienceType, CreditsType, ResearchesType } from "@/@types";
 
@@ -7,7 +7,6 @@ import { THEME } from "@/constants/theme";
 
 import Carousel from "../Carousel";
 import Credits from "../Credits";
-import MainCard from "../MainCard";
 import Audience from "../Audience";
 import Sended from "../Sended";
 
@@ -24,8 +23,16 @@ export default function MainContent({
   credits,
   gridArea,
 }: MainContentProps) {
+  const large = useMediaQuery(THEME.mediaQuery.large);
+
   return (
-    <Box width="100%" gridArea={gridArea} py="55px" px="70px">
+    <Box
+      width="100%"
+      gridArea={gridArea}
+      py="55px"
+      px={large ? 0 : "70px"}
+      pr={large ? "367px" : "70px"}
+    >
       <Box maxWidth="731px" width="100%" mx="auto">
         <Typography
           color={THEME.colors.black}
