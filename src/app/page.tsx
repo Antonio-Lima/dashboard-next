@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-import { getHomeData } from "@/services/requests";
+import { getHomeData, getNotifications } from "@/services/requests";
 
 import Summary from "@/components/Summary";
 import MainContent from "@/components/MainContent";
@@ -8,6 +8,7 @@ import Notifications from "@/components/Notifications";
 
 export default async function Home() {
   const { audience, credits, researches } = await getHomeData();
+  const notifications = await getNotifications();
 
   return (
     <Box
@@ -30,9 +31,7 @@ export default async function Home() {
         researches={researches}
         gridArea="main"
       />
-      <Box gridArea="notifications" width="384px">
-        <Notifications />
-      </Box>
+      <Notifications notifications={notifications} gridArea="notifications" />
     </Box>
   );
 }
