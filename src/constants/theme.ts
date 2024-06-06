@@ -21,7 +21,7 @@ export const THEME = {
   },
   mediaQuery: {
     xlarge: "(min-width: 1920px)",
-    large: "(min-width: 1250px)",
+    large: "(min-width: 1280px)",
     medium: "(min-width: 1010px)",
     small: "(min-width: 768px)",
     xsmall: "(min-width: 320px)",

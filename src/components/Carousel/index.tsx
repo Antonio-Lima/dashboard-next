@@ -63,7 +63,7 @@ export default function Carousel({ data }: CarouselProps) {
         slidesPerView={1}
         pagination={{ clickable: true }}
         breakpoints={{
-          1250: { slidesPerView: 3 },
+          1280: { slidesPerView: 3 },
           1010: { slidesPerView: 2 },
         }}
         className="swiper-dashboard"

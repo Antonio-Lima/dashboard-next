@@ -30,8 +30,8 @@ export default function MainContent({
       width="100%"
       gridArea={gridArea}
       py="55px"
-      px={large ? 0 : "70px"}
-      pr={large ? "367px" : "70px"}
+      px={large ? 0 : "80px"}
+      pr={large ? "367px" : "80px"}
     >
       <Box maxWidth="731px" width="100%" mx="auto">
         <Typography
