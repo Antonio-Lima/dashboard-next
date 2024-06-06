@@ -33,7 +33,7 @@ export default function MainContent({
       px={large ? 0 : "80px"}
       pr={large ? "367px" : "80px"}
     >
-      <Box maxWidth="731px" width="100%" mx="auto">
+      <Box maxWidth={large ? "731px" : "480px"} width="100%" mx="auto">
         <Typography
           color={THEME.colors.black}
           fontWeight="bold"
@@ -46,12 +46,18 @@ export default function MainContent({
         {researches.myresearches.length > 0 && (
           <Carousel data={researches.myresearches} />
         )}
-        <Box display="flex" width="100%" gap="20px" pt="52px">
+        <Box
+          display="flex"
+          width="100%"
+          gap="20px"
+          pt="52px"
+          flexDirection={large ? "row" : "column"}
+        >
           <Credits credits={credits} />
           <Box
             display="flex"
             width="100%"
-            maxWidth="343px"
+            maxWidth={large ? "343px" : "none"}
             flexDirection="column"
             gap="20px"
           >
