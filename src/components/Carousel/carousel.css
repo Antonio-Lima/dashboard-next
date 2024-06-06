@@ -1,0 +1,26 @@
+.swiper-slide {
+  margin-bottom: 26px;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 0px;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin: 0 3px;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #c9d1d6;
+  opacity: 1;
+  transition: background-color 0.5s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #000;
+}
