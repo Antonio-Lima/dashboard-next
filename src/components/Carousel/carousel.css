@@ -2,6 +2,10 @@
   margin-bottom: 26px;
 }
 
+.swiper-button-next:disabled {
+  display: none;
+}
+
 .swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal {
   bottom: 0px;
