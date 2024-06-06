@@ -19,4 +19,10 @@ export const THEME = {
   shadow: {
     main: "drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16))",
   },
+  mediaQuery: {
+    large: "(min-width: 1920px)",
+    medium: "(min-width: 1320px)",
+    small: "(min-width: 768px)",
+    xsmall: "(min-width: 320px)",
+  },
 };
