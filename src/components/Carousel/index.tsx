@@ -24,8 +24,10 @@ interface CarouselProps {
 
 export default function Carousel({ data }: CarouselProps) {
   const swiperRef = useRef<SwiperRef>(null);
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
+  const [slideState, setSlideState] = useState({
+    isBeginning: true,
+    isEnd: false,
+  });
 
   const goNext = () => {
     if (swiperRef.current) {
@@ -40,9 +42,7 @@ export default function Carousel({ data }: CarouselProps) {
   };
 
   const handleSwiperUpdate = (swiper: SwiperCore) => {
-    console.log(swiper);
-    setIsBeginning(swiper.isBeginning);
-    setIsEnd(swiper.isEnd);
+    setSlideState({ isBeginning: swiper.isBeginning, isEnd: swiper.isEnd });
   };
 
   return (
@@ -82,13 +82,13 @@ export default function Carousel({ data }: CarouselProps) {
           className="swiper-button-prev"
           onClick={goPrev}
           icon={<ArrowBackIosNewIcon />}
-          disabled={isBeginning}
+          disabled={slideState.isBeginning}
         />
         <ArrowButton
           className="swiper-button-next"
           onClick={goNext}
           icon={<ArrowForwardIosIcon />}
-          disabled={isEnd}
+          disabled={slideState.isEnd}
         />
       </Box>
     </Box>
