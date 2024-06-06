@@ -1,7 +1,10 @@
-import MainContent from "@/components/MainContent";
-import Summary from "@/components/Summary";
-import { getHomeData } from "@/services/requests";
 import { Box } from "@mui/material";
+
+import { getHomeData } from "@/services/requests";
+
+import Summary from "@/components/Summary";
+import MainContent from "@/components/MainContent";
+import Notifications from "@/components/Notifications";
 
 export default async function Home() {
   const { audience, credits, researches } = await getHomeData();
@@ -10,23 +13,26 @@ export default async function Home() {
     <Box
       display="grid"
       sx={{
-        gridTemplateAreas: `"a a a"
-      "b b c"`,
+        gridTemplateColumns: "1fr 1fr minmax(0, 384px)",
+        gridTemplateAreas: `"summary summary summary"
+      "main main notifications"`,
       }}
     >
       <Summary
         audience={audience}
         running={researches.running}
         scripting={researches.scripting}
-        gridArea="a"
+        gridArea="summary"
       />
       <MainContent
         audience={audience}
         credits={credits}
         researches={researches}
-        gridArea="b"
+        gridArea="main"
       />
-      <Box gridArea="c" width="384px"></Box>
+      <Box gridArea="notifications" width="384px">
+        <Notifications />
+      </Box>
     </Box>
   );
 }
