@@ -33,6 +33,8 @@ export default function Button({
         "&:hover": {
           backgroundColor:
             color === "primary" ? THEME.colors.white : THEME.colors.black,
+          borderColor:
+            color === "primary" ? THEME.colors.white : THEME.colors.black,
           color: color === "primary" ? THEME.colors.black : THEME.colors.white,
         },
       }}

@@ -44,7 +44,15 @@ export default function MainCard({ children, icon, title }: CardProps) {
           </Typography>
         </Box>
       )}
-      <Box px="20px" py="16px" width="100%">
+      <Box
+        px="20px"
+        py="16px"
+        width="100%"
+        display="flex"
+        flex={1}
+        flexDirection="column"
+        justifyContent="center"
+      >
         {children}
       </Box>
     </Box>

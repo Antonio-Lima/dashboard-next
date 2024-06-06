@@ -1,12 +1,12 @@
 import { Box, Typography } from "@mui/material";
 
 import FolderSharedIcon from "@mui/icons-material/FolderShared";
-import EastIcon from "@mui/icons-material/East";
 
 import { AudienceType } from "@/@types";
+
 import { THEME } from "@/constants/theme";
+
 import MainCard from "../MainCard";
-import Button from "../Button";
 import ArrowButton from "../Button/Arrow";
 
 interface AudienceProps {
