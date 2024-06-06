@@ -5,20 +5,14 @@ import { getHomeData, getNotifications } from "@/services/requests";
 import Summary from "@/components/Summary";
 import MainContent from "@/components/MainContent";
 import Notifications from "@/components/Notifications";
+import Wrapper from "@/components/Wrapper";
 
 export default async function Home() {
   const { audience, credits, researches } = await getHomeData();
   const notifications = await getNotifications();
 
   return (
-    <Box
-      display="grid"
-      sx={{
-        gridTemplateColumns: "1fr 1fr minmax(0, 384px)",
-        gridTemplateAreas: `"summary summary summary"
-      "main main notifications"`,
-      }}
-    >
+    <Wrapper>
       <Summary
         audience={audience}
         running={researches.running}
@@ -32,6 +26,6 @@ export default async function Home() {
         gridArea="main"
       />
       <Notifications notifications={notifications} gridArea="notifications" />
-    </Box>
+    </Wrapper>
   );
 }
