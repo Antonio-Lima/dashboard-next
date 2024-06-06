@@ -8,6 +8,7 @@ export const THEME = {
 
     "gray-500": "#242528",
     "gray-300": "#8A9099",
+    "gray-200": "#C9D1D6",
 
     "purple-200": "#C7B2FF",
 
