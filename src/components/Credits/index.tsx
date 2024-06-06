@@ -4,6 +4,7 @@ import MainCard from "../MainCard";
 import { THEME } from "@/constants/theme";
 import { CreditsType } from "@/@types";
 import { ReactNode } from "react";
+import Button from "../Button";
 
 interface CreditsProps {
   credits: CreditsType;
@@ -63,6 +64,8 @@ export default function Credits({ credits }: CreditsProps) {
           area="c"
         />
       </Box>
+
+      <Button color="secondary" label="Gerênciar créditos" />
     </MainCard>
   );
 }

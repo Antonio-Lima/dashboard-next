@@ -27,6 +27,9 @@ export default function Button({
         color: color === "primary" ? THEME.colors.white : THEME.colors.black,
         fontWeight: "bold",
         fontSize: "0.875rem",
+        border: "1px solid",
+        borderColor:
+          color === "primary" ? THEME.colors.black : THEME.colors["gray-200"],
         "&:hover": {
           backgroundColor:
             color === "primary" ? THEME.colors.white : THEME.colors.black,
