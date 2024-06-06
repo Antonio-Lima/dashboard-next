@@ -9,7 +9,7 @@ interface WrapperProps {
 }
 
 export default function Wrapper({ children }: WrapperProps) {
-  const large = useMediaQuery(THEME.mediaQuery.large);
+  const large = useMediaQuery(THEME.mediaQuery.xlarge);
 
   return (
     <Box

@@ -4,7 +4,7 @@ import { MyResearchType } from "@/@types";
 import SwiperCore from "swiper";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { Box, Button } from "@mui/material";
+import { Box, Button, useMediaQuery } from "@mui/material";
 
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -45,20 +45,28 @@ export default function Carousel({ data }: CarouselProps) {
     setSlideState({ isBeginning: swiper.isBeginning, isEnd: swiper.isEnd });
   };
 
+  const large = useMediaQuery(THEME.mediaQuery.large);
+  const medium = useMediaQuery(THEME.mediaQuery.medium);
+
   return (
-    <Box position="relative" mt="28px">
+    <Box
+      position="relative"
+      mt="28px"
+      maxWidth={large ? "731px" : medium ? "480px" : "230px"}
+      mx="auto"
+    >
       <Swiper
         ref={swiperRef}
         onSlideChange={handleSwiperUpdate}
         modules={[Navigation, Pagination]}
         spaceBetween={20}
-        slidesPerView={3}
+        slidesPerView={1}
         pagination={{ clickable: true }}
         breakpoints={{
-          1024: { slidesPerView: 3 },
-          600: { slidesPerView: 2 },
-          480: { slidesPerView: 1 },
+          1250: { slidesPerView: 3 },
+          1010: { slidesPerView: 2 },
         }}
+        className="swiper-dashboard"
       >
         {data.map((item) => (
           <SwiperSlide key={item.id}>

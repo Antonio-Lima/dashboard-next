@@ -23,7 +23,7 @@ export default function MainContent({
   credits,
   gridArea,
 }: MainContentProps) {
-  const large = useMediaQuery(THEME.mediaQuery.large);
+  const large = useMediaQuery(THEME.mediaQuery.xlarge);
 
   return (
     <Box
