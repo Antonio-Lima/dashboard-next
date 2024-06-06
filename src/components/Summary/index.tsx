@@ -33,6 +33,7 @@ export default function Summary({
       pb="2.375rem"
       display="flex"
       alignItems="center"
+      gap="20px"
       gridArea={gridArea}
     >
       <Box color={THEME.colors.white} maxWidth="731px" width="100%" mx="auto">
