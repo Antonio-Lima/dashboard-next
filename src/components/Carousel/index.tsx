@@ -1,10 +1,10 @@
 "use client";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { MyResearchType } from "@/@types";
 import SwiperCore from "swiper";
 import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { Box, Button, useMediaQuery } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -45,15 +45,17 @@ export default function Carousel({ data }: CarouselProps) {
     setSlideState({ isBeginning: swiper.isBeginning, isEnd: swiper.isEnd });
   };
 
-  const large = useMediaQuery(THEME.mediaQuery.large);
-  const medium = useMediaQuery(THEME.mediaQuery.medium);
-
   return (
     <Box
       position="relative"
       mt="28px"
-      maxWidth={large ? "731px" : medium ? "480px" : "230px"}
+      maxWidth={"480px"}
       mx="auto"
+      sx={{
+        "@media (min-width: 1280px)": {
+          maxWidth: "731px",
+        },
+      }}
     >
       <Swiper
         ref={swiperRef}
@@ -64,7 +66,7 @@ export default function Carousel({ data }: CarouselProps) {
         pagination={{ clickable: true }}
         breakpoints={{
           1280: { slidesPerView: 3 },
-          1010: { slidesPerView: 2 },
+          680: { slidesPerView: 2 },
         }}
         className="swiper-dashboard"
       >
