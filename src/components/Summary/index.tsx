@@ -114,6 +114,7 @@ export default function Summary({
             fontSize="1.125rem"
             color={THEME.colors.black}
             fontFamily="Public Sans"
+            textAlign="center"
           >
             Pronto para conhecer seu cliente?
           </Typography>

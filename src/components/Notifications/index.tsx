@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+"use client";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 import MessageIcon from "@mui/icons-material/Message";
 
@@ -19,12 +20,14 @@ export default function Notifications({
   const newNotifications = notifications.filter((item) => !item.read).length;
   const groupedNotifications = groupNotificationsByDate(notifications);
 
+  const medium = useMediaQuery(THEME.mediaQuery.medium);
+
   return (
     <Box
       width="100%"
       maxWidth="384px"
       bgcolor={THEME.colors.white}
-      display="flex"
+      display={medium ? "flex" : "none"}
       maxHeight="min-content"
       flex={1}
       flexDirection="column"

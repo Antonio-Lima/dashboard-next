@@ -9,15 +9,17 @@ interface WrapperProps {
 }
 
 export default function Wrapper({ children }: WrapperProps) {
-  const large = useMediaQuery(THEME.mediaQuery.xlarge);
+  const xlarge = useMediaQuery(THEME.mediaQuery.xlarge);
+  const medium = useMediaQuery(THEME.mediaQuery.medium);
 
   return (
     <Box
-      display="grid"
+      display={medium ? "grid" : "flex"}
+      flexDirection="column"
       sx={{
         gridTemplateColumns: "1fr 1fr minmax(0, 384px)",
         gridTemplateAreas: `"summary summary ${
-          large ? "notifications" : "summary"
+          xlarge ? "notifications" : "summary"
         }"
       "main main notifications"`,
       }}
