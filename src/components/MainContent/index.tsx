@@ -39,10 +39,13 @@ export default function MainContent({
       }}
     >
       <Box
-        maxWidth={"480px"}
+        maxWidth="731px"
         width="100%"
         mx="auto"
-        sx={{ "@media (min-width: 1280px)": { maxWidth: "731px" } }}
+        sx={{
+          "@media (min-width: 1280px)": { maxWidth: "480px" },
+          "@media (min-width: 1010px)": { maxWidth: "731px" },
+        }}
       >
         <Typography
           color={THEME.colors.black}

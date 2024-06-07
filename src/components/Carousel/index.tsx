@@ -55,6 +55,9 @@ export default function Carousel({ data }: CarouselProps) {
         "@media (min-width: 1280px)": {
           maxWidth: "731px",
         },
+        "@media (max-width: 1010px)": {
+          maxWidth: "731px",
+        },
       }}
     >
       <Swiper
@@ -62,12 +65,12 @@ export default function Carousel({ data }: CarouselProps) {
         onSlideChange={handleSwiperUpdate}
         modules={[Navigation, Pagination]}
         spaceBetween={20}
-        slidesPerView={1}
+        slidesPerView={"auto"}
         pagination={{ clickable: true }}
-        breakpoints={{
-          1280: { slidesPerView: 3 },
-          680: { slidesPerView: 2 },
-        }}
+        // breakpoints={{
+        //   1280: { slidesPerView: 3 },
+        //   1010: { slidesPerView: 2 },
+        // }}
         className="swiper-dashboard"
       >
         {data.map((item) => (
@@ -82,11 +85,18 @@ export default function Carousel({ data }: CarouselProps) {
       </Swiper>
       <Box
         position="absolute"
-        top="35%"
-        right="-66px"
-        left="-66px"
         display="flex"
+        right={0}
+        top="-67px"
         justifyContent="space-between"
+        gap="20px"
+        sx={{
+          [`@media ${THEME.mediaQuery.medium}`]: {
+            top: "35%",
+            right: "-66px",
+            left: "-66px",
+          },
+        }}
       >
         <ArrowButton
           className="swiper-button-prev"
@@ -121,21 +131,26 @@ function ArrowButton({
     <Button
       className={className}
       sx={{
-        color: THEME.colors.white,
         minWidth: "0",
         width: "46px",
         height: "46px",
-        background: THEME.colors.black,
-        borderRadius: "4px",
+        color: THEME.colors.black,
+        borderRadius: 999,
 
-        "&:hover": {
-          background: THEME.colors.white,
-          color: THEME.colors.black,
-        },
-        "&:disabled": {
-          opacity: 0.4,
-          background: THEME.colors["gray-300"],
-          color: THEME.colors["gray-500"],
+        [`@media ${THEME.mediaQuery.medium}`]: {
+          color: THEME.colors.white,
+          background: THEME.colors.black,
+          borderRadius: "4px",
+
+          "&:hover": {
+            background: THEME.colors.white,
+            color: THEME.colors.black,
+          },
+          "&:disabled": {
+            opacity: 0.4,
+            background: THEME.colors["gray-300"],
+            color: THEME.colors["gray-500"],
+          },
         },
       }}
       onClick={onClick}

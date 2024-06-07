@@ -1,9 +1,13 @@
 .swiper-slide {
   margin-bottom: 26px;
+  max-width: fit-content;
 }
 
 .swiper-button-next:disabled {
-  display: none;
+  display: flex;
+  @media (min-width: 1010px) {
+    display: none;
+  }
 }
 
 .swiper-horizontal > .swiper-pagination-bullets,
