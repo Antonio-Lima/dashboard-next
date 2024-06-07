@@ -1,5 +1,4 @@
-"use client";
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import { AudienceType, CreditsType, ResearchesType } from "@/@types";
 
@@ -23,17 +22,28 @@ export default function MainContent({
   credits,
   gridArea,
 }: MainContentProps) {
-  const xlarge = useMediaQuery(THEME.mediaQuery.xlarge);
-
   return (
     <Box
       width="100%"
       gridArea={gridArea}
       py="55px"
-      px={xlarge ? 0 : "80px"}
-      pr={xlarge ? "367px" : "80px"}
+      px={0}
+      pr={"367px"}
+      sx={{
+        "@media (max-width: 1920px)": {
+          px: "80px",
+        },
+        "@media (max-width: 1280px)": {
+          px: "80px",
+        },
+      }}
     >
-      <Box maxWidth={xlarge ? "731px" : "480px"} width="100%" mx="auto">
+      <Box
+        maxWidth={"480px"}
+        width="100%"
+        mx="auto"
+        sx={{ "@media (min-width: 1280px)": { maxWidth: "731px" } }}
+      >
         <Typography
           color={THEME.colors.black}
           fontWeight="bold"
@@ -51,15 +61,25 @@ export default function MainContent({
           width="100%"
           gap="20px"
           pt="52px"
-          flexDirection={xlarge ? "row" : "column"}
+          flexDirection={"column"}
+          sx={{
+            "@media (min-width: 1280px)": {
+              flexDirection: "row",
+            },
+          }}
         >
           <Credits credits={credits} />
           <Box
             display="flex"
             width="100%"
-            maxWidth={xlarge ? "343px" : "none"}
+            maxWidth={"none"}
             flexDirection="column"
             gap="20px"
+            sx={{
+              "@media (min-width: 1280px)": {
+                maxWidth: "343px",
+              },
+            }}
           >
             <Audience audience={audience} />
             <Sended audience={audience} />
