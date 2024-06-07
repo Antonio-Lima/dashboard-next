@@ -1,6 +1,8 @@
-import { THEME } from "@/constants/theme";
-import { Box, Typography } from "@mui/material";
+import { useState } from "react";
 import Image from "next/image";
+import { Box, Typography } from "@mui/material";
+
+import { THEME } from "@/constants/theme";
 
 interface CardProps {
   status: string;
@@ -8,14 +10,25 @@ interface CardProps {
 }
 
 export default function CarouselCard({ status, title }: CardProps) {
+  const [hover, setHover] = useState(false);
+
   return (
     <Box
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       width="230px"
       height="242px"
       bgcolor={THEME.colors.black}
       p="2px"
       pb="12px"
       borderRadius="6px"
+      sx={{
+        cursor: "pointer",
+        transition: "all 0.2s ease-in-out",
+        "&:hover": {
+          mt: "-10px",
+        },
+      }}
     >
       <Box
         bgcolor={THEME.colors.white}
@@ -37,7 +50,14 @@ export default function CarouselCard({ status, title }: CardProps) {
             bgcolor={THEME.colors["green-500"]}
           />
         )}
-        <Box borderLeft="2px solid" borderColor={THEME.colors.black} pl="2px">
+        <Box
+          borderLeft="2px solid"
+          borderColor={hover ? THEME.colors.primary : THEME.colors.black}
+          pl="2px"
+          sx={{
+            transition: "all 0.2s ease-in-out",
+          }}
+        >
           <Typography
             textTransform="uppercase"
             fontSize="0.75rem"
@@ -45,6 +65,10 @@ export default function CarouselCard({ status, title }: CardProps) {
             fontFamily="Public Sans"
             position="relative"
             lineHeight="0.875rem"
+            color={hover ? THEME.colors.primary : THEME.colors.black}
+            sx={{
+              transition: "all 0.2s ease-in-out",
+            }}
           >
             {status}
             {status.toLowerCase() === "rascunho" && (
@@ -61,12 +85,17 @@ export default function CarouselCard({ status, title }: CardProps) {
             fontSize="1.125rem"
             fontWeight="bold"
             color={
-              status.toLocaleLowerCase() === "rascunho"
+              hover
+                ? THEME.colors.primary
+                : status.toLocaleLowerCase() === "rascunho"
                 ? THEME.colors["gray-300"]
                 : THEME.colors.black
             }
             fontFamily="Public Sans"
             lineHeight="1.31rem"
+            sx={{
+              transition: "all 0.2s ease-in-out",
+            }}
           >
             {title}
           </Typography>
