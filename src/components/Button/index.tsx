@@ -16,6 +16,7 @@ export default function Button({
   label,
   icon,
   fullWidth = true,
+  ...rest
 }: ButtonProps) {
   return (
     <ButtonMui
@@ -38,6 +39,7 @@ export default function Button({
           color: color === "primary" ? THEME.colors.black : THEME.colors.white,
         },
       }}
+      {...rest}
     >
       {label}
     </ButtonMui>
