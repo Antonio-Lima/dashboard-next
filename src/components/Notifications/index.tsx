@@ -7,6 +7,7 @@ import { NotificationType } from "@/@types";
 import { THEME } from "@/constants/theme";
 import { groupNotificationsByDate, isToday } from "@/utils";
 import ArrowButton from "../Button/Arrow";
+import { useState } from "react";
 
 interface NotificationProps {
   notifications: NotificationType[];
@@ -17,8 +18,22 @@ export default function Notifications({
   notifications,
   gridArea,
 }: NotificationProps) {
-  const newNotifications = notifications.filter((item) => !item.read).length;
-  const groupedNotifications = groupNotificationsByDate(notifications);
+  const [list, setList] = useState(notifications);
+  const newNotifications = list.filter((item) => !item.read).length;
+  const groupedNotifications = groupNotificationsByDate(list);
+
+  function handleNotificationClick(id: string) {
+    const newList = list.reduce(
+      (acc: NotificationType[], obj: NotificationType) => {
+        if (obj.id === id) acc.push({ ...obj, read: true });
+        else acc.push(obj);
+
+        return acc;
+      },
+      []
+    );
+    setList(newList);
+  }
 
   return (
     <Box
@@ -57,7 +72,11 @@ export default function Notifications({
               {isToday(key) ? "Hoje" : key}
             </Typography>
             {groupedNotifications[key].map((item) => (
-              <TimelineCard key={item.id} item={item} />
+              <TimelineCard
+                key={item.id}
+                item={item}
+                onClick={() => handleNotificationClick(item.id)}
+              />
             ))}
           </Box>
         ))}
@@ -68,11 +87,16 @@ export default function Notifications({
 
 interface TimelineCardProps {
   item: NotificationType;
+  onClick: () => void;
 }
 
-function TimelineCard({ item }: TimelineCardProps) {
+function TimelineCard({ item, onClick }: TimelineCardProps) {
+  const [hover, setHover] = useState(false);
+
   return (
     <Box
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
       display="flex"
       flexDirection="column"
       alignItems="flex-start"
@@ -82,17 +106,23 @@ function TimelineCard({ item }: TimelineCardProps) {
       border="1px solid"
       borderColor={THEME.colors["gray-200"]}
       borderRadius="4px"
-      mt="16px"
+      mt="17px"
       position="relative"
       sx={{
         "&:before": {
           position: "absolute",
-          top: "-17px",
+          top: "-18px",
           left: "36px",
           content: "''",
           width: "1px",
-          height: "16px",
+          height: "17px",
           backgroundColor: THEME.colors["gray-100"],
+        },
+
+        transition: "all 0.3s ease-in-out",
+
+        "&:hover": {
+          borderColor: THEME.colors.primary,
         },
       }}
     >
@@ -109,20 +139,26 @@ function TimelineCard({ item }: TimelineCardProps) {
             fontWeight="bold"
             display="flex"
             alignItems="center"
+            color={hover ? THEME.colors.primary : THEME.colors.black}
+            sx={{
+              transition: "all 0.3s ease-in-out",
+            }}
           >
             <MessageIcon fontSize="small" sx={{ marginRight: "6px" }} />
             {item.comments} NOVOS COMENTÁRIOS
           </Typography>
         )}
-        {!item.read && (
-          <Box
-            width="10px"
-            height="10px"
-            bgcolor={THEME.colors.primary}
-            borderRadius={999}
-            mt="-8px"
-          />
-        )}
+        <Box
+          width="10px"
+          height="10px"
+          bgcolor={THEME.colors.primary}
+          borderRadius={999}
+          mt="-8px"
+          sx={{
+            opacity: item.read ? 0 : 1,
+            transition: "opacity 0.3s ease-in-out",
+          }}
+        />
       </Box>
       <Box display="flex" alignItems="center" gap="20px">
         <Typography
@@ -139,7 +175,7 @@ function TimelineCard({ item }: TimelineCardProps) {
             },
           }}
         />
-        <ArrowButton />
+        <ArrowButton color={hover ? "brand" : "primary"} onClick={onClick} />
       </Box>
     </Box>
   );
