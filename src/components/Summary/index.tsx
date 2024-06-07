@@ -29,8 +29,8 @@ export default function Summary({
     <Box
       width="100%"
       bgcolor={THEME.colors.black}
-      p="1.375rem"
-      pb="2.375rem"
+      p="14px"
+      pb="60px"
       display="flex"
       flexDirection="column"
       alignItems="center"
@@ -39,6 +39,8 @@ export default function Summary({
       sx={{
         [`@media ${THEME.mediaQuery.medium}`]: {
           flexDirection: "row",
+          p: "22px",
+          pb: "38px",
         },
       }}
     >

@@ -67,10 +67,6 @@ export default function Carousel({ data }: CarouselProps) {
         spaceBetween={20}
         slidesPerView={"auto"}
         pagination={{ clickable: true }}
-        // breakpoints={{
-        //   1280: { slidesPerView: 3 },
-        //   1010: { slidesPerView: 2 },
-        // }}
         className="swiper-dashboard"
       >
         {data.map((item) => (

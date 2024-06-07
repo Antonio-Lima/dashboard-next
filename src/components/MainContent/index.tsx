@@ -26,9 +26,12 @@ export default function MainContent({
     <Box
       width="100%"
       gridArea={gridArea}
-      py="55px"
+      py="60px"
       px="14px"
       sx={{
+        [`@media ${THEME.mediaQuery.medium}`]: {
+          py: "55px",
+        },
         "@media (min-width: 1010px) AND (max-width: 1920px)": {
           px: "80px",
         },

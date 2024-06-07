@@ -14,8 +14,6 @@ import "@fontsource/public-sans/900.css";
 
 import "./globals.css";
 
-import Header from "@/components/Header";
-
 const font = Public_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,10 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={font.className}>
-        <Header />
-        {children}
-      </body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
