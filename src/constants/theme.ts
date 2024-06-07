@@ -19,6 +19,7 @@ export const THEME = {
   shadow: {
     main: "drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.16))",
   },
+
   mediaQuery: {
     xlarge: "(min-width: 1920px)",
     large: "(min-width: 1280px)",

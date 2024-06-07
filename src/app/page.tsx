@@ -1,5 +1,3 @@
-import { Box } from "@mui/material";
-
 import { getHomeData, getNotifications } from "@/services/requests";
 
 import Summary from "@/components/Summary";
