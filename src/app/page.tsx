@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
+      <Header notifications={notifications} />
       <Wrapper>
         <Summary
           audience={audience}

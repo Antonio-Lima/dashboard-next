@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { MoreVert } from "@mui/icons-material";
 import {
@@ -9,12 +10,18 @@ import {
   Typography,
   styled,
   ButtonProps,
+  Button,
 } from "@mui/material";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import CloseIcon from "@mui/icons-material/Close";
 import { Turn as Hamburger } from "hamburger-react";
 
 import { THEME } from "@/constants/theme";
-import { useState } from "react";
 import DropDown from "../DropDown";
+import { NotificationType } from "@/@types";
+import NotificationsHeader from "../Notifications/Header";
+import { groupNotificationsByDate, isToday } from "@/utils";
+import TimelineCard from "../TimelineCard";
 
 const navItems = [
   {
@@ -44,8 +51,30 @@ const user = {
   email: "antonio.lima@acmecorp.com",
 };
 
-export default function Header() {
+interface HeaderProps {
+  notifications: NotificationType[];
+}
+
+export default function Header({ notifications }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [list, setList] = useState(notifications);
+  const newNotifications = list.filter((item) => !item.read).length;
+  const groupedNotifications = groupNotificationsByDate(list);
+
+  function handleNotificationClick(id: string) {
+    const newList = list.reduce(
+      (acc: NotificationType[], obj: NotificationType) => {
+        if (obj.id === id) acc.push({ ...obj, read: true });
+        else acc.push(obj);
+
+        return acc;
+      },
+      []
+    );
+    setList(newList);
+  }
+
   return (
     <Box
       position="fixed"
@@ -113,6 +142,51 @@ export default function Header() {
             {item.label}
           </Link>
         ))}
+      </Box>
+      <Box
+        sx={{
+          [`@media ${THEME.mediaQuery.medium}`]: {
+            display: "none",
+          },
+        }}
+      >
+        <Button
+          onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+          color="inherit"
+          sx={{
+            position: "relative",
+            minWidth: "0",
+            width: "44px",
+            height: "44px",
+            borderRadius: 999,
+            background: THEME.colors["gray-500"],
+            color: THEME.colors.white,
+            "&:hover": {
+              background: THEME.colors["gray-500"],
+            },
+          }}
+        >
+          {isNotificationsOpen ? (
+            <CloseIcon />
+          ) : (
+            <>
+              <NotificationsIcon sx={{ zIndex: 9 }} />
+              <Box
+                position="absolute"
+                top="18%"
+                right="22%"
+                zIndex={10}
+                width="12px"
+                height="12px"
+                borderRadius={999}
+                bgcolor={THEME.colors.primary}
+                border="2px solid"
+                borderColor={THEME.colors["gray-500"]}
+                sx={{ opacity: newNotifications > 0 ? 1 : 0 }}
+              />
+            </>
+          )}
+        </Button>
       </Box>
       <Box
         alignItems="center"
@@ -277,6 +351,38 @@ export default function Header() {
         >
           Logout
         </Link>
+      </DropDown>
+      <DropDown open={isNotificationsOpen}>
+        <NotificationsHeader newNotifications={newNotifications} />
+        <Box
+          px="17px"
+          py="30px"
+          display="flex"
+          flexDirection="column"
+          flex={1}
+          maxHeight="calc(100vh - 174px)"
+          overflow="scroll"
+        >
+          {Object.keys(groupedNotifications).map((key, index) => (
+            <Box key={index}>
+              <Typography
+                fontFamily="Public Sans"
+                fontSize="0.875rem"
+                fontWeight="regular"
+                color={THEME.colors["gray-300"]}
+              >
+                {isToday(key) ? "Hoje" : key}
+              </Typography>
+              {groupedNotifications[key].map((item) => (
+                <TimelineCard
+                  key={item.id}
+                  item={item}
+                  onClick={() => handleNotificationClick(item.id)}
+                />
+              ))}
+            </Box>
+          ))}
+        </Box>
       </DropDown>
     </Box>
   );
