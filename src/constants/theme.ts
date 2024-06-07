@@ -25,6 +25,5 @@ export const THEME = {
     large: "(min-width: 1280px)",
     medium: "(min-width: 1010px)",
     small: "(min-width: 768px)",
-    xsmall: "(min-width: 320px)",
   },
 };

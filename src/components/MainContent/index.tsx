@@ -27,24 +27,23 @@ export default function MainContent({
       width="100%"
       gridArea={gridArea}
       py="55px"
-      px={0}
-      pr={"367px"}
+      px="14px"
       sx={{
-        "@media (max-width: 1920px)": {
+        "@media (min-width: 1010px) AND (max-width: 1920px)": {
           px: "80px",
         },
-        "@media (max-width: 1280px)": {
-          px: "80px",
+        "@media (min-width: 1920px)": {
+          pr: "367px",
         },
       }}
     >
       <Box
-        maxWidth="731px"
+        maxWidth="480px"
         width="100%"
         mx="auto"
         sx={{
-          "@media (min-width: 1280px)": { maxWidth: "480px" },
-          "@media (min-width: 1010px)": { maxWidth: "731px" },
+          "@media (min-width: 1280px)": { maxWidth: "731px" },
+          "@media (max-width: 1010px)": { maxWidth: "731px" },
         }}
       >
         <Typography
