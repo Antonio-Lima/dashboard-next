@@ -10,6 +10,7 @@ interface CardProps {
   title: ReactNode;
   variant: "points" | "progression" | "none";
   hasMark?: boolean;
+  gridArea: "a" | "b" | "c";
 }
 
 export default function SummaryCard({
@@ -18,6 +19,7 @@ export default function SummaryCard({
   title,
   variant,
   hasMark = false,
+  gridArea,
 }: CardProps) {
   return (
     <Box
@@ -28,6 +30,7 @@ export default function SummaryCard({
       p="1.375rem"
       border="1px solid"
       borderColor={THEME.colors["gray-500"]}
+      gridArea={gridArea}
     >
       {hasMark && (
         <Box

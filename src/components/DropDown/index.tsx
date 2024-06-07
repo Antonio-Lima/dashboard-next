@@ -39,7 +39,7 @@ export default function DropDown({ open, children }: DropDownProps) {
       <Box
         height="100vh"
         flex={1}
-        bgcolor="rgba(0, 0, 0, 0.8)"
+        bgcolor="rgba(0, 0, 0, 0.6)"
         display={showBg ? "flex" : "none"}
         sx={{ transition: "all 0.5s ease-in-out", opacity: open ? 1 : 0 }}
       />

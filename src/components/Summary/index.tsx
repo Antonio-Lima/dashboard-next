@@ -32,9 +32,15 @@ export default function Summary({
       p="1.375rem"
       pb="2.375rem"
       display="flex"
+      flexDirection="column"
       alignItems="center"
       gap="20px"
       gridArea={gridArea}
+      sx={{
+        [`@media ${THEME.mediaQuery.medium}`]: {
+          flexDirection: "row",
+        },
+      }}
     >
       <Box color={THEME.colors.white} maxWidth="731px" width="100%" mx="auto">
         <Typography
@@ -54,7 +60,19 @@ export default function Summary({
         >
           {getFormatedActualDate()}
         </Typography>
-        <Box width="100%" display="flex" gap="1.25rem" mt="1rem">
+        <Box
+          width="100%"
+          display="grid"
+          gridTemplateColumns="1fr 1fr"
+          gridTemplateAreas={`"a b" "c c"`}
+          gap="20px"
+          mt="16px"
+          sx={{
+            [`@media ${THEME.mediaQuery.medium}`]: {
+              display: "flex",
+            },
+          }}
+        >
           <SummaryCard
             value={Number(runningValue)}
             goal={Number(runningGoal)}
@@ -65,6 +83,7 @@ export default function Summary({
             }
             hasMark
             variant="points"
+            gridArea="a"
           />
           <SummaryCard
             value={scripting}
@@ -77,6 +96,7 @@ export default function Summary({
               </>
             }
             variant="none"
+            gridArea="b"
           />
           <SummaryCard
             value={audience.sended}
@@ -89,38 +109,45 @@ export default function Summary({
               </>
             }
             variant="progression"
+            gridArea="c"
           />
         </Box>
       </Box>
-      <Card>
-        <Box
-          bgcolor={THEME.colors["purple-200"]}
-          px="25px"
-          pt="13px"
-          pb="26px"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          gap="1rem"
+      <Box
+        bgcolor={THEME.colors["purple-200"]}
+        px="25px"
+        pt="13px"
+        pb="26px"
+        width="100%"
+        display="flex"
+        maxWidth="731px"
+        flexDirection="column"
+        alignItems="center"
+        gap="16px"
+        borderRadius="4px"
+        sx={{
+          [`@media ${THEME.mediaQuery.medium}`]: {
+            maxWidth: "345px",
+          },
+        }}
+      >
+        <Image
+          src="/assets/images/stars.svg"
+          alt="Stars"
+          width={92}
+          height={92}
+        />
+        <Typography
+          fontWeight="bold"
+          fontSize="1.125rem"
+          color={THEME.colors.black}
+          fontFamily="Public Sans"
+          textAlign="center"
         >
-          <Image
-            src="/assets/images/stars.svg"
-            alt="Stars"
-            width={92}
-            height={92}
-          />
-          <Typography
-            fontWeight="bold"
-            fontSize="1.125rem"
-            color={THEME.colors.black}
-            fontFamily="Public Sans"
-            textAlign="center"
-          >
-            Pronto para conhecer seu cliente?
-          </Typography>
-          <Button label="Nova Pesquisa" icon={<Add />}></Button>
-        </Box>
-      </Card>
+          Pronto para conhecer seu cliente?
+        </Typography>
+        <Button label="Nova Pesquisa" icon={<Add />}></Button>
+      </Box>
     </Box>
   );
 }

@@ -22,13 +22,17 @@ export default function Credits({ credits }: CreditsProps) {
         CRÉDITOS PARA PAINEL
       </Typography>
       <Box
-        px="45px"
         my="18px"
         display="grid"
         gridTemplateAreas={`"a a" "b c"`}
         gridTemplateColumns="1fr 1fr"
         rowGap="12px"
         columnGap="16px"
+        sx={{
+          [`@media ${THEME.mediaQuery.medium}`]: {
+            px: "45px",
+          },
+        }}
       >
         <PanelCard
           variant="green"
