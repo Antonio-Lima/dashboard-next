@@ -12,6 +12,7 @@ export default function Wrapper({ children }: WrapperProps) {
     <Box
       display="flex"
       flexDirection="column"
+      pt="65px"
       sx={{
         gridTemplateColumns: "1fr 1fr minmax(0, 384px)",
         gridTemplateAreas: `"summary summary summary"
